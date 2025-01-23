@@ -1,0 +1,65 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <!-- 배경 음악 변경 버튼 -->
+    <Button
+        android:id="@+id/musicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MUSIC"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp" />
+
+    <!-- 커스텀 원 View -->
+    <com.example.swu_guru2_17.CircleTimerView
+        android:id="@+id/circleTimerView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true" />
+
+    <!-- 타이머 텍스트 -->
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="00:00"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- 버튼 컨테이너 -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <!-- Reset 버튼 -->
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset" />
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <!-- Start/Stop 버튼 -->
+        <Button
+            android:id="@+id/startStopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start" />
+    </LinearLayout>
+</RelativeLayout>

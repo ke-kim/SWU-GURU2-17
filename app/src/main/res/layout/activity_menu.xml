@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    tools:context=".MenuActivity">
+
+    <!-- 상단 타이틀과 닫기 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <!-- 타이틀 텍스트 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_weight="1" />
+
+        <!-- 닫기 버튼 -->
+        <TextView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✕"
+            android:textSize="24sp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <!-- 버튼 리스트 -->
+    <Button
+        android:id="@+id/stopwatchButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="스톱워치"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/alertButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="알람"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/goalButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="목표"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/statisticsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="통계"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/stickerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="스티커판"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white" />
+</LinearLayout>
