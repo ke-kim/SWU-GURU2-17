@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#E7EBEF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:background="#E7EBEF">
+
+        <!-- 이미지와 기본 정보 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 책 표지 이미지 -->
+            <ImageView
+                android:id="@+id/imageBookCover"
+                android:layout_width="102dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="책표지"
+                android:src="@drawable/book_cover"/>
+
+            <!-- 책 정보 영역 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <!-- 책 제목 행 -->
+                <LinearLayout
+                    android:background="@drawable/bookinfo_background"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="책 제목"
+                        android:textColor="#000000"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/textTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:text="책 제목"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"/>
+                </LinearLayout>
+
+                <!-- 저자 행 -->
+                <LinearLayout
+                    android:padding="10dp"
+                    android:background="@drawable/bookinfo_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="저자"
+                        android:textColor="#000000"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/textAuthor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="28dp"
+                        android:text="저자"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"/>
+                </LinearLayout>
+
+                <!-- 출판사 행 -->
+                <LinearLayout
+                    android:padding="10dp"
+                    android:background="@drawable/bookinfo_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="출판사"
+                        android:textColor="#000000"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/textPublisher"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="16dp"
+                        android:text="출판사"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 메모 -->
+        <TextView
+            android:id="@+id/textMemo"
+            android:background="@drawable/bookinfo_background"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:text="메모"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <!-- 완독 체크박스 -->
+        <CheckBox
+            android:id="@+id/checkboxCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="완독"
+            android:layout_marginTop="4dp"
+            android:buttonTint="@color/orange_1"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <!-- 날짜 -->
+            <TextView
+                android:id="@+id/textDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="2025년 01월 26일"
+                android:textStyle="bold"
+                android:textColor="#999999"
+                android:textSize="15sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="25dp">
+
+                <Button
+                    android:id="@+id/buttonEdit"
+                    android:layout_width="65dp"
+                    android:layout_height="40dp"
+                    android:text="수정"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="#D9D9D9"/>
+
+                <Button
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/buttonDelete"
+                    android:layout_width="65dp"
+                    android:layout_height="40dp"
+                    android:text="삭제"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="#D9D9D9"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#121213</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="orange_1">#FF8000</color>
+    <color name="orange_2">#FA932D</color>
+    <color name="orange_3">#FFAC59</color>
+    <color name="orange_4">#FFBC79</color>
+    <color name="orange_5">#FFC890</color>
+
+    <color name="gray_1">#F4F6F8</color>
+    <color name="gray_2">#E7EBEF</color>
+    <color name="gray_3">#D8DBE2</color>
+    <color name="gray_4">#C4CAD4</color>
+    <color name="gray_5">#A4ADBC</color>
+    <color name="gray_6">#8E95A2</color>
+    <color name="gray_7">#595F72</color>
+    <color name="gray_8">#353C49</color>
+    <color name="gray_9">#1A1F27</color>
+
+    <!-- 캘린더 관련 색상 -->
+    <color name="calendar_selected">#FFC890</color>
+    <color name="calendar_today">#FFC890</color>
+</resources>
+
+

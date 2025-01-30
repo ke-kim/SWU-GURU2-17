@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_book_memo"
+        android:icon="@drawable/ic_book"
+        app:itemIconTint="@null"
+        android:tint="@null"
+
+        android:title="독서 메모"/>
+
+    <item
+        android:id="@+id/nav_story_book"
+        android:icon="@drawable/ic_stopwatch"
+        android:title="스탑워치"/>
+
+    <item
+        android:id="@+id/nav_alarm"
+        android:icon="@drawable/ic_alarm"
+        android:title="알람"/>
+
+    <item
+        android:id="@+id/nav_goal"
+        android:icon="@drawable/ic_goal"
+        android:title="목표"/>
+
+    <item
+        android:id="@+id/nav_statistics"
+        android:icon="@drawable/ic_statistics"
+        android:title="통계"/>
+
+    <item
+        android:id="@+id/nav_sticker"
+        android:icon="@drawable/ic_sticker"
+        android:title="완독 스티커판"/>
+</menu>

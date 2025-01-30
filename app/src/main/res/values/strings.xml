@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 앱 정보 -->
+    <string name="app_name">MyBli</string>
+
+    <!-- 메인 화면 -->
+    <string name="select_date">날짜를 선택하세요</string>
+    <string name="book_list">Book List</string>
+    <string name="add_memo">메모 추가</string>
+    <string name="view_memo_list">메모 목록</string>
+
+    <!-- 메모 입력/수정 화면 -->
+    <string name="complete">완료</string>
+    <string name="cancel">취소</string>
+    <string name="book_title">책 제목</string>
+    <string name="author">저자</string>
+    <string name="publisher">출판사</string>
+    <string name="memo">메모</string>
+    <string name="add_image">이미지 추가</string>
+    <string name="completion_check">완독했어요!</string>
+    <string name="enter_title">제목을 입력해주세요</string>
+    <string name="enter_author">저자를 입력해주세요</string>
+    <string name="enter_publisher">출판사를 입력해주세요</string>
+    <string name="enter_memo">메모를 입력해주세요</string>
+    <string name="image_load_failed">이미지를 불러오는데 실패했습니다</string>
+
+    <!-- 메모 목록 화면 -->
+    <string name="search_hint">검색어를 입력하세요</string>
+    <string name="edit">수정</string>
+    <string name="delete">삭제</string>
+    <string name="memo_list">메모 목록</string>
+
+    <!-- 스티커판 화면 -->
+    <string name="sticker_board">스티커판</string>
+    <string name="puzzle_description">지금까지 책을 읽은만큼 마음의 퍼즐이 완성되어요!</string>
+    <string name="puzzle_complete">축하합니다! 퍼즐을 모두 완성했어요!</string>
+    <string name="puzzle_progress_extended">%1$d번째 퍼즐이에요!\n지금까지 %2$d권 읽었어요.\n%3$d권 더 읽으면 %1$d번째 퍼즐이 완성돼요!</string>
+    <string name="first_book_guide">첫 번째 책을 읽고 완독 체크해보세요!</string>
+
+    <!-- 메뉴 -->
+    <string name="menu">메뉴</string>
+    <string name="back">뒤로 가기</string>
+    <string name="nav_book_memo">독서 메모</string>
+    <string name="nav_story_book">스토리북</string>
+    <string name="nav_alarm">알람</string>
+    <string name="nav_goal">목표</string>
+    <string name="nav_statistics">통계</string>
+    <string name="nav_sticker">완독 스티커판</string>
+    <string name="feature_not_ready">아직 준비 중인 기능입니다.</string>
+
+    <!-- 날짜 관련 -->
+    <string name="date">날짜</string>
+    <string name="completed">완독</string>
+</resources>
