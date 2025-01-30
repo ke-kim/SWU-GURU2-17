@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">SWU_GURU2_17</string>
+
+    <string-array name="repeat_options">
+        <item>매주 일요일</item>
+        <item>매주 월요일</item>
+        <item>매주 화요일</item>
+        <item>매주 수요일</item>
+        <item>매주 목요일</item>
+        <item>매주 금요일</item>
+        <item>매주 토요일</item>
+    </string-array>
+
+    <string-array name="sound_options">
+        <item>Steps</item>
+        <item>Tilt</item>
+        <item>Rader</item>
+        <item>Robot</item>
+        <item>Silk</item>
+        <item>Slow Rise</item>
+        <item>Twinkle</item>
+    </string-array>
 </resources>

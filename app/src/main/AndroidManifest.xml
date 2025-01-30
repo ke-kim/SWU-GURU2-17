@@ -12,18 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SWU_GURU2_17"
         tools:targetApi="31">
+
         <activity
-            android:name=".MenuActivity"
+            android:name=".EditAlarmActivity"
             android:exported="false" />
         <activity
-            android:name=".CircleTimerView"
-            android:exported="false" />
+            android:name=".AddAlarmActivity"
+            android:exported="true" />
         <activity
-            android:name=".TargetTimeActivity"
-            android:exported="false" />
+            android:name=".AlarmActivity"
+            android:exported="true" />
         <activity
             android:name=".RecordActivity"
             android:exported="false" />
+        <activity
+            android:name=".EditGoalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GoalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="true" />
         <activity
             android:name=".TimerActivity"
             android:exported="false" />

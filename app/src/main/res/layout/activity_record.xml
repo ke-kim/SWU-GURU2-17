@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="16dp">
+
+    <!-- 메뉴 버튼 -->
+    <ImageButton
+        android:id="@+id/menuButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_menu"
+        android:contentDescription="Menu Button"
+        android:background="@null"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <!-- 상단 버튼 (Daily, Weekly) -->
+    <LinearLayout
+        android:id="@+id/toggleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menuButton"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/dailyButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Daily"
+            android:background="@color/light_gray"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:id="@+id/weeklyButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Weekly"
+            android:background="@color/light_gray"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+    <!-- 그래프 영역 -->
+    <FrameLayout
+        android:id="@+id/graphContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/toggleLayout"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1">
+
+        <com.example.swu_guru2_17.CircleTimerView
+            android:id="@+id/circleGraph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <com.example.swu_guru2_17.BarChartView
+            android:id="@+id/barGraph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <!-- 시간 표시 -->
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/graphContainer"
+        android:layout_centerHorizontal="true"
+        android:text="00:00:00"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+</RelativeLayout>

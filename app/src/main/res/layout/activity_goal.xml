@@ -1,0 +1,64 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="16dp">
+
+    <!-- 메뉴 버튼 -->
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="메뉴" />
+
+    <!-- Daily 및 Weekly 버튼 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/menuButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp">
+
+        <!-- Daily 버튼 -->
+        <Button
+            android:id="@+id/dailyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily" />
+
+        <!-- Weekly 버튼 -->
+        <Button
+            android:id="@+id/weeklyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weekly"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <!-- 달성 퍼센트 텍스트 -->
+    <TextView
+        android:id="@+id/completionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="0% 달성"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- 목표 시간 수정 버튼 -->
+    <Button
+        android:id="@+id/editGoalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="목표 시간 수정"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+</RelativeLayout>
