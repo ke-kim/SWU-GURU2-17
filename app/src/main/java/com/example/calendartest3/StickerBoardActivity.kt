@@ -1,9 +1,11 @@
 package com.example.swu_guru2_17
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.swu_guru2_17.databinding.ActivityStickerBoardBinding
 import kotlinx.coroutines.CoroutineScope
@@ -22,6 +24,7 @@ class StickerBoardActivity : AppCompatActivity() {
 
         memoDatabaseHelper = MemoDatabaseHelper(this)
         setupViews()
+        setupDrawer()
         updatePuzzleProgress()
     }
 
@@ -51,6 +54,26 @@ class StickerBoardActivity : AppCompatActivity() {
                 completedCount,
                 9 - (completedCount % 9)
             )
+        }
+    }
+
+    private fun setupDrawer() {
+        binding.menuButton.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.END) // 오른쪽에서 사이드바 열기
+        }
+
+        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> startActivity(Intent(this, MainActivity::class.java))
+                R.id.nav_book_memo -> startActivity(Intent(this, MemoListActivity::class.java))
+                R.id.nav_story_book -> startActivity(Intent(this, TimerActivity::class.java))
+                R.id.nav_alarm -> startActivity(Intent(this, AlarmActivity::class.java))
+                R.id.nav_goal -> startActivity(Intent(this, GoalActivity::class.java))
+                R.id.nav_statistics -> startActivity(Intent(this, StatisticsActivity::class.java))
+                R.id.nav_sticker -> startActivity(Intent(this, StickerBoardActivity::class.java))
+            }
+            binding.drawerLayout.closeDrawers()
+            true
         }
     }
 }

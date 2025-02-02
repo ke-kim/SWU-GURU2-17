@@ -2,6 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        app:itemIconTint="@null"
+        android:tint="@null"
+
+        android:title="캘린더 홈"/>
+
     <item
         android:id="@+id/nav_book_memo"
         android:icon="@drawable/ic_book"

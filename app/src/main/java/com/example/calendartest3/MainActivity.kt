@@ -135,6 +135,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
                 R.id.nav_book_memo -> {
                     startActivity(Intent(this, MemoListActivity::class.java))
                     true

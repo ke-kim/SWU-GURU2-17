@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:padding="16dp"
-    android:background="@color/gray_2">
+    android:background="@color/gray_1">
 
     <!-- 상단 취소 및 저장 버튼 -->
     <TextView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="취소"
-        android:textColor="@color/gray_5"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_alignParentStart="true"
         android:padding="16dp"/>
@@ -40,6 +40,8 @@
 
     <!-- 시간 선택 NumberPicker -->
     <LinearLayout
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:id="@+id/timePickerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +81,10 @@
         android:orientation="vertical"
         android:layout_below="@id/timePickerContainer"
         android:background="@color/white"
-        android:elevation="4dp"
+        android:elevation="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
         android:padding="8dp">
 
         <TextView
@@ -121,6 +126,8 @@
         android:text="🧹 알람 삭제하기"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_background"/>

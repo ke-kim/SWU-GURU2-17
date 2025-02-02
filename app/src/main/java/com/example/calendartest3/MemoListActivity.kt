@@ -42,9 +42,6 @@ class MemoListActivity : AppCompatActivity() {
         recyclerView = binding.memoRecyclerView
         searchView = binding.searchView
 
-        binding.backButton.setOnClickListener {
-            finish()
-        }
 
         binding.addMemoButton.setOnClickListener {
             startActivity(Intent(this, AddMemoActivity::class.java))

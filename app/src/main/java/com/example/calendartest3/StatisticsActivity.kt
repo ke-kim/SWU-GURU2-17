@@ -53,6 +53,7 @@ class StatisticsActivity : AppCompatActivity() {
 
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+                R.id.nav_home -> startActivity(Intent(this, MainActivity::class.java))
                 R.id.nav_book_memo -> startActivity(Intent(this, MemoListActivity::class.java))
                 R.id.nav_story_book -> startActivity(Intent(this, TimerActivity::class.java))
                 R.id.nav_alarm -> startActivity(Intent(this, AlarmActivity::class.java))

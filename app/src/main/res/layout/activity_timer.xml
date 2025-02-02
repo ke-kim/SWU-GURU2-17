@@ -5,7 +5,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_2">
+    android:background="@color/gray_1">
 
     <!-- 네비게이션 드로어 -->
     <RelativeLayout
@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/suite_variable"
             android:text="Stopwatch"
             android:textColor="@color/black"
@@ -37,6 +38,7 @@
             android:layout_marginTop="16dp"
             android:background="@null"
             android:clickable="true"
+            android:layout_marginEnd="16dp"
             android:contentDescription="Menu Button"
             android:focusable="true"
             android:src="@drawable/ic_menu" />
@@ -59,6 +61,9 @@
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/rounded_background" />
 
         <!-- 타이머 원형 진행 바 -->
