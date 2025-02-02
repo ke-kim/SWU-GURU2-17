@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.swu_guru2_17">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name=".BookApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_mybli"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_mybli"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BookMemo">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MemoListActivity" />
+        <activity android:name=".AddMemoActivity" />
+        <activity android:name=".TimerActivity" />
+        <activity android:name=".AlarmActivity" />
+        <activity android:name=".AddAlarmActivity" />
+        <activity android:name=".EditAlarmActivity" />
+        <activity android:name=".GoalActivity" />
+        <activity android:name=".EditDailyGoalActivity" />
+        <activity android:name=".EditWeeklyGoalActivity" />
+        <activity android:name=".StatisticsActivity" />
+        <activity android:name=".StickerBoardActivity" />
+    </application>
+
+</manifest>

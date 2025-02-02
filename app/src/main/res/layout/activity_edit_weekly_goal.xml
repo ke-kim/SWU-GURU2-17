@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- 닫기 버튼 -->
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_close"
+        android:contentDescription="닫기 버튼" />
+
+    <!-- 타이틀 -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="목표 시간 수정"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+
+    <!-- Weekly 텍스트 -->
+    <TextView
+        android:id="@+id/weeklyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="16dp"
+        android:text="Weekly"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true" />
+
+    <!-- 목표 시간 조정 -->
+    <LinearLayout
+        android:id="@+id/adjustContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weeklyLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <!-- 감소 버튼 -->
+        <Button
+            android:id="@+id/decrementButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="−"
+            android:textSize="24sp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="@android:color/white"/>
+
+        <!-- 목표 시간 입력 -->
+        <EditText
+            android:id="@+id/goalEditText"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:hint="목표"
+            android:inputType="number"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <!-- 증가 버튼 -->
+        <Button
+            android:id="@+id/incrementButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="+"
+            android:textSize="24sp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <!-- 수정하기 버튼 -->
+    <Button
+        android:id="@+id/saveGoalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:text="수정하기"
+        android:backgroundTint="@android:color/darker_gray"
+        android:textColor="@android:color/white"/>
+</RelativeLayout>
