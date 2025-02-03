@@ -1,151 +1,14 @@
-//package com.example.swu_guru2_17
-//
-//import android.animation.ValueAnimator
-//import android.app.AlertDialog
-//import android.content.Intent
-//import java.util.concurrent.TimeUnit
-//import android.os.Bundle
-//import android.os.Handler
-//import android.os.Looper
-//import android.view.Gravity
-//import android.view.MenuItem
-//import androidx.appcompat.app.AppCompatActivity
-//import androidx.core.view.GravityCompat
-//import androidx.drawerlayout.widget.DrawerLayout
-//import com.google.android.material.navigation.NavigationView
-//import com.example.swu_guru2_17.databinding.ActivityTimerBinding
-//
-//class TimerActivity : AppCompatActivity() {
-//
-//    private lateinit var binding: ActivityTimerBinding
-//    private var isRunning = false
-//    private var secondsElapsed = 0
-//    private var animator: ValueAnimator? = null
-//
-//    private val handler = Handler(Looper.getMainLooper())
-//    private lateinit var timerRunnable: Runnable
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = ActivityTimerBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        setupDrawer() // 사이드바 기능 추가
-//        setupTimer()
-//    }
-//
-//    private fun setupDrawer() {
-//        binding.menuButton.setOnClickListener {
-//            binding.drawerLayout.openDrawer(GravityCompat.END) // 🔹 오른쪽에서 사이드바 열기
-//        }
-//
-//        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
-//            when (menuItem.itemId) {
-//                R.id.nav_book_memo -> startActivity(Intent(this, MemoListActivity::class.java))
-//                R.id.nav_story_book -> startActivity(Intent(this, TimerActivity::class.java))
-//                R.id.nav_alarm -> startActivity(Intent(this, AlarmActivity::class.java))
-//                R.id.nav_goal -> startActivity(Intent(this, GoalActivity::class.java))
-//                R.id.nav_statistics -> startActivity(Intent(this, StatisticsActivity::class.java))
-//                R.id.nav_sticker -> startActivity(Intent(this, StickerBoardActivity::class.java))
-//            }
-//            binding.drawerLayout.closeDrawers() // 메뉴 클릭 후 닫기
-//            true
-//        }
-//    }
-//
-//    private fun setupTimer() {
-//        binding.startStopButton.setOnClickListener {
-//            if (isRunning) {
-//                stopTimer()
-//            } else {
-//                startTimer()
-//            }
-//        }
-//
-//        binding.resetButton.setOnClickListener {
-//            resetTimer()
-//        }
-//
-//        binding.musicButton.setOnClickListener {
-//            showMusicDialog()
-//        }
-//    }
-//
-//    private fun startTimer() {
-//        isRunning = true
-//        binding.startStopButton.text = "Stop"
-//
-//        timerRunnable = object : Runnable {
-//            override fun run() {
-//                secondsElapsed++
-//                updateTimerTextView()
-//                handler.postDelayed(this, 1000)
-//            }
-//        }
-//        handler.post(timerRunnable)
-//
-//        animator = ValueAnimator.ofFloat(0f, 1f).apply {
-//            duration = 60000L // 60초
-//            repeatCount = ValueAnimator.INFINITE
-//            repeatMode = ValueAnimator.RESTART
-//            addUpdateListener { animation ->
-//                val progress = animation.animatedValue as Float
-//                binding.circleTimerView.setProgress(progress)
-//            }
-//            start()
-//        }
-//    }
-//
-//    private fun stopTimer() {
-//        isRunning = false
-//        binding.startStopButton.text = "Start"
-//        handler.removeCallbacks(timerRunnable)
-//        animator?.cancel()
-//    }
-//
-//    private fun resetTimer() {
-//        stopTimer()
-//        secondsElapsed = 0
-//        binding.timerTextView.text = "00:00"
-//        binding.circleTimerView.setProgress(0f)
-//    }
-//
-//    private fun updateTimerTextView() {
-//        val minutes = TimeUnit.SECONDS.toMinutes(secondsElapsed.toLong())
-//        val seconds = secondsElapsed % 60
-//        val formattedTime = String.format("%02d:%02d", minutes, seconds)
-//        binding.timerTextView.text = formattedTime
-//    }
-//
-//    private fun showMusicDialog() {
-//        val musicOptions = arrayOf("NONE", "Library", "Night", "Rain", "Storm", "City", "Cooking")
-//        AlertDialog.Builder(this).apply {
-//            setTitle("Select Background Music")
-//            setItems(musicOptions) { _, which ->
-//                val selectedMusic = musicOptions[which]
-//                startActivity(Intent(this@TimerActivity, TimerActivity::class.java))
-//            }
-//            create()
-//            show()
-//        }
-//    }
-//}
-
 package com.example.swu_guru2_17
 
 import android.animation.ValueAnimator
 import android.app.AlertDialog
 import android.content.Intent
-import java.util.concurrent.TimeUnit
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.Gravity
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
 import com.example.swu_guru2_17.databinding.ActivityTimerBinding
 
 class TimerActivity : AppCompatActivity() {
@@ -155,9 +18,11 @@ class TimerActivity : AppCompatActivity() {
     private var secondsElapsed = 0
     private var progressElapsed = 0f
     private var animator: ValueAnimator? = null
-
     private val handler = Handler(Looper.getMainLooper())
+
     private lateinit var timerRunnable: Runnable
+    private var mediaPlayer: MediaPlayer? = null
+    private var selectedMusic: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -227,6 +92,9 @@ class TimerActivity : AppCompatActivity() {
             }
             start()
         }
+
+        // 음악이 선택된 경우 재생
+        selectedMusic?.let { playMusicFromRaw(it) }
     }
 
     private fun stopTimer() {
@@ -234,6 +102,9 @@ class TimerActivity : AppCompatActivity() {
         binding.startStopButton.text = "Start"
         handler.removeCallbacks(timerRunnable)
         animator?.cancel()
+
+        // 음악 정지
+        mediaPlayer?.pause()
     }
 
     private fun resetTimer() {
@@ -245,7 +116,7 @@ class TimerActivity : AppCompatActivity() {
     }
 
     private fun updateTimerTextView() {
-        val minutes = TimeUnit.SECONDS.toMinutes(secondsElapsed.toLong())
+        val minutes = secondsElapsed / 60
         val seconds = secondsElapsed % 60
         val formattedTime = String.format("%02d:%02d", minutes, seconds)
         binding.timerTextView.text = formattedTime
@@ -253,14 +124,61 @@ class TimerActivity : AppCompatActivity() {
 
     private fun showMusicDialog() {
         val musicOptions = arrayOf("NONE", "Library", "Night", "Rain", "Storm", "City", "Cooking")
+        val musicFiles = mapOf(
+            "Library" to R.raw.library,
+            "Night" to R.raw.night,
+            "Rain" to R.raw.rain,
+            "Storm" to R.raw.storm,
+            "City" to R.raw.city,
+            "Cooking" to R.raw.cooking
+        )
+
         AlertDialog.Builder(this).apply {
-            setTitle("Select Background Music")
+            setTitle("배경 음악 선택")
             setItems(musicOptions) { _, which ->
-                val selectedMusic = musicOptions[which]
-                startActivity(Intent(this@TimerActivity, TimerActivity::class.java))
+                val selected = musicOptions[which]
+                if (selected == "NONE") {
+                    stopMusic()
+                    selectedMusic = null
+                } else {
+                    selectedMusic = selected
+                    playMusicFromRaw(selected)
+                }
             }
             create()
             show()
         }
+    }
+
+    private fun playMusicFromRaw(musicName: String) {
+        val musicFiles = mapOf(
+            "Library" to R.raw.library,
+            "Night" to R.raw.night,
+            "Rain" to R.raw.rain,
+            "Storm" to R.raw.storm,
+            "City" to R.raw.city,
+            "Cooking" to R.raw.cooking
+        )
+
+        // 기존 음악 정지
+        stopMusic()
+
+        // 새 음악 재생
+        val musicResId = musicFiles[musicName] ?: return
+        mediaPlayer = MediaPlayer.create(this, musicResId).apply {
+            setOnCompletionListener { stopMusic() }
+            start()
+        }
+    }
+
+    private fun stopMusic() {
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
     }
 }
