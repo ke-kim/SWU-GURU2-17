@@ -11,39 +11,42 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.text.SimpleDateFormat
 import java.util.*
-import com.example.swu_guru2_17.TimePeriod
 
 class GoalActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGoalBinding
     private lateinit var sharedPref: SharedPreferences
     private val gson = Gson()
-    private var isDailyView = true
+    private var isDailyView = true  // Daily / Weekly 토글 상태
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGoalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // sharedPref 초기화 (누락된 부분 추가)
         sharedPref = getSharedPreferences("GoalPreferences", MODE_PRIVATE)
 
         setupDrawer()
-        setupMenuButton() // ✅ 메뉴 버튼 클릭 이벤트 추가
+        setupMenuButton()
+        setupToggleButtons()
         updateGoalProgress()
+
+        // modifyGoalButton 클릭 시 EditDailyGoalActivity로 이동
+        binding.modifyGoalButton.setOnClickListener {
+            val intent = Intent(this, EditDailyGoalActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE_EDIT_GOAL)
+        }
     }
 
-    // 🔹 메뉴 버튼 클릭 시 네비게이션 바 열기
     private fun setupMenuButton() {
         binding.menuButton.setOnClickListener {
             if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
-                binding.drawerLayout.closeDrawer(GravityCompat.END) // 닫기
+                binding.drawerLayout.closeDrawer(GravityCompat.END)
             } else {
-                binding.drawerLayout.openDrawer(GravityCompat.END) // 열기
+                binding.drawerLayout.openDrawer(GravityCompat.END)
             }
         }
     }
 
-    // 🔹 오른쪽에서 나오는 네비게이션 메뉴 설정
     private fun setupDrawer() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -59,7 +62,24 @@ class GoalActivity : AppCompatActivity() {
         }
     }
 
-    // 🔹 목표 달성률 업데이트 (기존 로직 유지)
+    // Daily / Weekly 버튼 클릭 이벤트 추가
+    private fun setupToggleButtons() {
+        binding.dailyButton.setOnClickListener {
+            isDailyView = true
+            updateGoalProgress()
+            binding.dailyButton.setBackgroundResource(R.drawable.toggle_left_selected)
+            binding.weeklyButton.setBackgroundResource(R.drawable.toggle_right_unselected)
+        }
+
+        binding.weeklyButton.setOnClickListener {
+            isDailyView = false
+            updateGoalProgress()
+            binding.dailyButton.setBackgroundResource(R.drawable.toggle_left_unselected)
+            binding.weeklyButton.setBackgroundResource(R.drawable.toggle_right_selected)
+        }
+    }
+
+    // 목표 달성률 업데이트 (Daily / Weekly에 따라 변경)
     private fun updateGoalProgress() {
         val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val goalDataJson = sharedPref.getString("goalData", "{}")
@@ -81,5 +101,17 @@ class GoalActivity : AppCompatActivity() {
 
         binding.completionTextView.text = "$completionPercentage% 달성!"
         binding.hourglassGraph.setProgress(completionPercentage / 100f)
+    }
+
+    // EditDailyGoalActivity에서 목표를 수정한 후 결과 받기
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_EDIT_GOAL && resultCode == RESULT_OK) {
+            updateGoalProgress()
+        }
+    }
+
+    companion object {
+        private const val REQUEST_CODE_EDIT_GOAL = 1001
     }
 }
