@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")

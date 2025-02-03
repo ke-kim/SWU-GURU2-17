@@ -143,12 +143,41 @@ class MemoDatabaseHelper(private val ctx: Context) : SQLiteOpenHelper(ctx, DATAB
 
     fun updateMemoCompletion(id: Int, isCompleted: Boolean) {
         val db = writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_IS_COMPLETED, if (isCompleted) 1 else 0)
-        }
         val memo = getMemo(id)
+
         memo?.let {
-            updateCompletionForAllWithTitle(it.title, isCompleted)
+            // 트랜잭션 시작
+            db.beginTransaction()
+            try {
+                // 동일 제목을 가진 모든 메모 업데이트
+                val values = ContentValues().apply {
+                    put(COLUMN_IS_COMPLETED, if (isCompleted) 1 else 0)
+                }
+                db.update(TABLE_MEMOS, values, "$COLUMN_TITLE = ?", arrayOf(it.title))
+                db.setTransactionSuccessful()
+            } finally {
+                db.endTransaction()
+            }
+        }
+    }
+
+    // 동일 제목 메모들의 완독 상태 확인
+    fun isTitleCompleted(title: String): Boolean {
+        val db = readableDatabase
+        val cursor = db.query(
+            TABLE_MEMOS,
+            arrayOf(COLUMN_IS_COMPLETED),
+            "$COLUMN_TITLE = ?",
+            arrayOf(title),
+            null,
+            null,
+            null
+        )
+
+        return cursor.use {
+            if (it.moveToFirst()) {
+                it.getInt(0) == 1
+            } else false
         }
     }
 

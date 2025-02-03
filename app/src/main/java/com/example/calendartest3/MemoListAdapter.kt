@@ -29,8 +29,14 @@ class MemoListAdapter(
                 textPublisher.text = memo.publisher
                 textMemo.text = memo.memo
                 textDate.text = memo.date
-                checkboxCompleted.isChecked = memo.isCompleted
 
+                checkboxCompleted.setOnCheckedChangeListener(null)
+                checkboxCompleted.isChecked = memo.isCompleted
+                checkboxCompleted.setOnCheckedChangeListener { _, isChecked ->
+                    if (memo.isCompleted != isChecked) {
+                        onCompletedChange(memo, isChecked)
+                    }
+                }
                 if (memo.imagePath.isNotEmpty()) {
                     Glide.with(root.context)
                         .load(File(memo.imagePath))
@@ -43,9 +49,6 @@ class MemoListAdapter(
 
                 buttonDelete.setOnClickListener { onDeleteClick(memo) }
                 buttonEdit.setOnClickListener { onEditClick(memo) }
-                checkboxCompleted.setOnCheckedChangeListener { _, isChecked ->
-                    onCompletedChange(memo, isChecked)
-                }
             }
         }
     }
