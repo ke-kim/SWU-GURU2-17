@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.NumberPicker
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 
@@ -16,7 +17,7 @@ class EditDailyGoalActivity : AppCompatActivity() {
     private lateinit var hourPicker: NumberPicker
     private lateinit var minutePicker: NumberPicker
     private lateinit var saveGoalButton: Button
-    private lateinit var closeButton: ImageButton
+    private lateinit var backButton: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class EditDailyGoalActivity : AppCompatActivity() {
         hourPicker = findViewById(R.id.hourPicker)
         minutePicker = findViewById(R.id.minutePicker)
         saveGoalButton = findViewById(R.id.saveGoalButton)
-        closeButton = findViewById(R.id.closeButton)
+        backButton = findViewById(R.id.backButton)
 
         // NumberPicker 설정
         hourPicker.minValue = 0
@@ -44,7 +45,7 @@ class EditDailyGoalActivity : AppCompatActivity() {
         }
 
         // 닫기 버튼 클릭
-        closeButton.setOnClickListener {
+        backButton.setOnClickListener {
             finish()
         }
     }
