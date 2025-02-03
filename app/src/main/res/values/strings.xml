@@ -31,7 +31,7 @@
     <string name="memo_list">메모 목록</string>
 
     <!-- 스티커판 화면 -->
-    <string name="sticker_board">스티커판</string>
+    <string name="sticker_board">MyPuzzle</string>
     <string name="puzzle_description">지금까지 책을 읽은만큼 마음의 퍼즐이 완성되어요!</string>
     <string name="puzzle_complete">축하합니다! 퍼즐을 모두 완성했어요!</string>
     <string name="puzzle_progress_extended">%1$d번째 퍼즐이에요!\n지금까지 %2$d권 읽었어요.\n%3$d권 더 읽으면 %1$d번째 퍼즐이 완성돼요!</string>
