@@ -165,7 +165,14 @@ class TimerActivity : AppCompatActivity() {
 
         // 새 음악 재생
         val musicResId = musicFiles[musicName] ?: return
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
         mediaPlayer = MediaPlayer.create(this, musicResId).apply {
+            mediaPlayer?.setOnCompletionListener {
+                mediaPlayer?.release()
+                mediaPlayer = null
+            }
             setOnCompletionListener { stopMusic() }
             start()
         }
@@ -178,6 +185,9 @@ class TimerActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
         super.onDestroy()
         mediaPlayer?.release()
     }
